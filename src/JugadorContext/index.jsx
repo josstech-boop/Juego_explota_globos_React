@@ -19,6 +19,8 @@ const JugadorContextProvider = ({ children }) => {
     const [temporizador, setTemporizador] = React.useState(0)
 
 
+
+
     return (
         <JugadorContext.Provider value={
             {
