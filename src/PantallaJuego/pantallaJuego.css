@@ -1,0 +1,387 @@
+/* ==========================================================================
+   Estilos Generales y Reset (Consistentes con la pantalla de inicio)
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Contenedor Principal (Cielo de fondo idéntico) */
+.pantalla-juego {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* ==========================================================================
+   Elementos Decorativos (Cielo y Nubes - Idénticos para consistencia)
+   ========================================================================== */
+.cielo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nube {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 100px;
+  opacity: 0.85;
+}
+
+.nube::before,
+.nube::after {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.nube-1 {
+  width: 170px;
+  height: 60px;
+  top: 8%;
+  left: 7%;
+}
+.nube-1::before {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  left: 20px;
+}
+.nube-1::after {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  right: 25px;
+}
+
+.nube-2 {
+  width: 220px;
+  height: 70px;
+  top: 15%;
+  right: 5%;
+}
+.nube-2::before {
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: 30px;
+}
+.nube-2::after {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  right: 35px;
+}
+
+.nube-3 {
+  width: 120px;
+  height: 45px;
+  top: 35%;
+  left: 12%;
+  opacity: 0.6;
+}
+.nube-3::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 15px;
+}
+.nube-3::after {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  right: 20px;
+}
+
+/* ==========================================================================
+   Césped (Franja Inferior - Idéntico)
+   ========================================================================== */
+.cesped {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.capa-cesped-atras {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #2d8a4e;
+  border-top-left-radius: 50% 20px;
+  border-top-right-radius: 50% 20px;
+  opacity: 0.9;
+}
+
+.capa-cesped-delante {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 85%;
+  background: #39b54a;
+  border-top-left-radius: 40% 15px;
+  border-top-right-radius: 60% 15px;
+}
+
+/* ==========================================================================
+   Interfaz de Juego Central
+   ========================================================================== */
+.interfaz-juego {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ==========================================================================
+   Barra Superior de Información (Tarjetas con sombras y bordes)
+   ========================================================================== */
+.barra-superior {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  width: 100%;
+}
+
+.tarjeta-info {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.icono-tarjeta {
+  font-size: 1.6rem;
+}
+
+.info-textos {
+  display: flex;
+  flex-direction: column;
+}
+
+.etiqueta-tarjeta {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.valor-tarjeta {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #2c3e50;
+}
+
+/* Colores e Identificadores en tarjetas */
+.tarjeta-jugador {
+  border-left: 5px solid #4facfe;
+}
+.tarjeta-puntaje {
+  border-left: 5px solid #f1c40f;
+}
+.tarjeta-tiempo {
+  border-left: 5px solid #e74c3c;
+}
+
+/* ==========================================================================
+   Área de Juego (Contenedor de Globos con borde punteado y sombra ligera)
+   ========================================================================== */
+.area-globos {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background-color: rgba(240, 248, 255, 0.85); /* Azul muy claro */
+  border: 3px dashed #74b9ff;
+  border-radius: 24px;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.03), 0 10px 25px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Globos Decorativos (Sin lógica ni animaciones complejas)
+   ========================================================================== */
+.globo-juego {
+  position: absolute;
+  width: 48px;
+  height: 58px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  transition: transform 0.2s ease;
+}
+
+/* Pequeño feedback al pasar por encima sólo de forma visual */
+.globo-juego:hover {
+  transform: scale(1.05);
+}
+
+/* Nudo del globo */
+.globo-juego::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+/* Hilo colgante del globo */
+.hilo-globo {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  width: 2px;
+  height: 22px;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Brillo 3D */
+.brillo-globo {
+  position: absolute;
+  top: 8px;
+  left: 9px;
+  width: 11px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: rotate(-15deg);
+}
+
+/* Paleta de colores de Globos (Consistente con Inicio) */
+.globo-rojo {
+  background: radial-gradient(circle at 35% 35%, #ff7675, #d63031);
+}
+.globo-rojo::before {
+  border-bottom: 7px solid #d63031;
+}
+
+.globo-verde {
+  background: radial-gradient(circle at 35% 35%, #55efc4, #00b894);
+}
+.globo-verde::before {
+  border-bottom: 7px solid #00b894;
+}
+
+.globo-azul {
+  background: radial-gradient(circle at 35% 35%, #74b9ff, #0984e3);
+}
+.globo-azul::before {
+  border-bottom: 7px solid #0984e3;
+}
+
+.globo-negro {
+  background: radial-gradient(circle at 35% 35%, #636e72, #2d3436);
+}
+.globo-negro::before {
+  border-bottom: 7px solid #2d3436;
+}
+
+
+/* Posiciones estáticas asimétricas (25 Globos bien distribuidos) */
+.pos-1  { top: 4%;   left: 4%; }
+.pos-2  { top: 35%;  left: 2%; }
+.pos-3  { top: 68%;  left: 6%; }
+.pos-4  { top: 16%;  left: 12%; }
+.pos-5  { top: 48%;  left: 14%; }
+.pos-6  { top: 8%;   left: 22%; }
+.pos-7  { top: 38%;  left: 25%; }
+.pos-8  { top: 72%;  left: 24%; }
+.pos-9  { top: 22%;  left: 33%; }
+.pos-10 { top: 52%;  left: 36%; }
+.pos-11 { top: 5%;   left: 42%; }
+.pos-12 { top: 30%;  left: 46%; }
+.pos-13 { top: 65%;  left: 48%; }
+.pos-14 { top: 15%;  left: 55%; }
+.pos-15 { top: 46%;  left: 58%; }
+.pos-16 { top: 74%;  left: 62%; }
+.pos-17 { top: 8%;   left: 67%; }
+.pos-18 { top: 34%;  left: 71%; }
+.pos-19 { top: 62%;  left: 74%; }
+.pos-20 { top: 18%;  left: 80%; }
+.pos-21 { top: 48%;  left: 83%; }
+.pos-22 { top: 75%;  left: 88%; }
+.pos-23 { top: 6%;   left: 91%; }
+.pos-24 { top: 30%;  left: 92%; }
+.pos-25 { top: 58%;  left: 18%; }
+/* ==========================================================================
+   Leyenda de Puntos Inferior
+   ========================================================================== */
+.leyenda-puntos {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.item-leyenda {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2c3e50;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.punto-color {
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   Responsividad (Totalmente fluido y adaptable a dispositivos móviles)
+   ========================================================================== */
+@media (max-width: 580px) {
+  .barra-superior {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .tarjeta-info {
+    padding: 10px 14px;
+  }
+
+  .area-globos {
+    height: 350px;
+  }
+
+  /* Ajustar posiciones levemente para pantallas móviles estrechas */
+  .pos-3 { top: 15%; left: 40%; }
+  .pos-4 { top: 45%; left: 50%; }
+  .pos-7 { top: 55%; left: 75%; }
+
+  .leyenda-puntos {
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    padding: 10px 15px;
+  }
+}

@@ -1,17 +1,24 @@
 import './login.css'
 import React from 'react'
+import { useContext } from 'react'
+import { JugadorContext } from '../JugadorContext'
+
 
 const Login = () => {
 
-
-    const OnChange = () => {
-
-    }
+    const {
+        nombreJugador,
+        setnombreJugador: actualizarNombre,
+        setPantallaDinamica,
+        setError,
+        error,
+    } = useContext(JugadorContext)
 
     return (
 
-
         <div className="pantalla-inicio">
+
+
             {/* Fondo y Elementos del Cielo */}
             <div className="cielo">
                 <div className="nube nube-1"></div>
@@ -26,18 +33,35 @@ const Login = () => {
                     Pon a prueba tus reflejos. Consigue la mayor puntuación explotando los globos correctos antes de que se acabe el tiempo. ¡Evita los globos negros!
                 </p>
 
+                <form action="">
+
+                </form>
+
                 {/* Input de Nombre */}
                 <div className="campo-nombre">
+
                     <label htmlFor="nombre-jugador" className="etiqueta-input">Nombre del Jugador</label>
                     <input
                         type="text"
                         id="nombre-jugador"
                         className="input-moderno"
                         placeholder="Escribe tu nombre aquí..."
-                        value={'Joselyn'}
-                        onChange={(event) => event.target}
-                        disabled
+                        value={nombreJugador}
+                        onChange={
+                            (event) => {
+                                actualizarNombre(event.target.value)
+                                console.log(nombreJugador)
+                            }
+                        }
+                        required
+
                     />
+
+                    {/* Mensaje de error */}
+
+                    {error ? <div className="mensaje-error-alerta">
+                        ⚠️ Ingresa tu nombre para comenzar.
+                    </div> : ''}
                 </div>
 
                 {/* Sección de Puntuaciones */}
@@ -80,7 +104,22 @@ const Login = () => {
                 </section>
 
                 {/* Botón de Acción */}
-                <button type="button" className="boton-comenzar">
+                <button type="button" className="boton-comenzar"
+                    onClick={
+                        (event) => {
+
+                            if (nombreJugador.trim() != '') {
+                                setPantallaDinamica('jugar')
+                            } else {
+                                setError(true)
+
+                                setTimeout(() => {
+                                    setError(false)
+                                }, 2000)
+                            }
+
+                        }}
+                >
                     Comenzar Juego
                 </button>
             </main>

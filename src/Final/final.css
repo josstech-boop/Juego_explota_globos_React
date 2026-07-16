@@ -1,0 +1,338 @@
+/* ==========================================================================
+   Estilos Generales y Reset (Consistentes con las pantallas anteriores)
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Contenedor Principal (Cielo de fondo idéntico) */
+.pantalla-resultado {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(180deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* ==========================================================================
+   Elementos Decorativos (Cielo y Nubes - Idénticos para consistencia)
+   ========================================================================== */
+.cielo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nube {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 100px;
+  opacity: 0.85;
+}
+
+.nube::before,
+.nube::after {
+  content: '';
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+.nube-1 {
+  width: 170px;
+  height: 60px;
+  top: 8%;
+  left: 7%;
+}
+.nube-1::before {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  left: 20px;
+}
+.nube-1::after {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  right: 25px;
+}
+
+.nube-2 {
+  width: 220px;
+  height: 70px;
+  top: 15%;
+  right: 5%;
+}
+.nube-2::before {
+  width: 100px;
+  height: 100px;
+  top: -50px;
+  left: 30px;
+}
+.nube-2::after {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  right: 35px;
+}
+
+.nube-3 {
+  width: 120px;
+  height: 45px;
+  top: 35%;
+  left: 12%;
+  opacity: 0.6;
+}
+.nube-3::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 15px;
+}
+.nube-3::after {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  right: 20px;
+}
+
+/* ==========================================================================
+   Césped (Franja Inferior - Idéntico)
+   ========================================================================== */
+.cesped {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.capa-cesped-atras {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #2d8a4e;
+  border-top-left-radius: 50% 20px;
+  border-top-right-radius: 50% 20px;
+  opacity: 0.9;
+}
+
+.capa-cesped-delante {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 85%;
+  background: #39b54a;
+  border-top-left-radius: 40% 15px;
+  border-top-right-radius: 60% 15px;
+}
+
+/* ==========================================================================
+   Tarjeta Central de Resultados
+   ========================================================================== */
+.tarjeta-resultado {
+  position: relative;
+  z-index: 10;
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 540px;
+  border-radius: 24px;
+  padding: 35px 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Título Principal */
+.titulo-fin {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #f1c40f, #e67e22);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Resumen del Jugador */
+.resumen-jugador {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.bloque-info {
+  flex: 1;
+  background: #f8fafc;
+  border: 1px solid #edf2f7;
+  padding: 12px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.bloque-info.destacada {
+  background: linear-gradient(135deg, #eef2f3 0%, #ffeaa7 100%);
+  border-color: #f1c40f;
+}
+
+.etiqueta {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.valor-texto {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #2c3e50;
+}
+
+.valor-destacado {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #d35400;
+}
+
+/* ==========================================================================
+   Cuadrícula de Estadísticas (4 Tarjetas)
+   ========================================================================== */
+.cuadricula-estadisticas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.tarjeta-est {
+  background: #fdfdfd;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  transition: transform 0.2s ease;
+}
+
+.tarjeta-est:hover {
+  transform: translateY(-2px);
+}
+
+.icono-est {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.valor-est {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #2d3748;
+  margin-bottom: 2px;
+}
+
+.etiqueta-est {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #718096;
+}
+
+/* ==========================================================================
+   Caja de Mensaje Verde (Feedback)
+   ========================================================================== */
+.caja-mensaje {
+  width: 100%;
+  background-color: #d4edda;
+  border: 2px solid #c3e6cb;
+  border-radius: 14px;
+  padding: 14px 20px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.1);
+}
+
+.texto-mensaje {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #155724;
+}
+
+/* ==========================================================================
+   Botón de Acción (Idéntico a "Comenzar Juego" para total consistencia)
+   ========================================================================== */
+.boton-reiniciar {
+  width: 100%;
+  padding: 16px 24px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(56, 239, 125, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton-reiniciar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(56, 239, 125, 0.45);
+}
+
+/* ==========================================================================
+   Responsividad (Diseño fluido y adaptable)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .tarjeta-resultado {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+
+  .titulo-fin {
+    font-size: 1.8rem;
+  }
+
+  .resumen-jugador {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cuadricula-estadisticas {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .tarjeta-est {
+    padding: 12px;
+  }
+
+  .nube-3 {
+    display: none;
+  }
+}

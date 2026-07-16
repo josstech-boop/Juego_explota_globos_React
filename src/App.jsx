@@ -1,13 +1,13 @@
-import { useState } from 'react'
-import { Login } from './Login'
+import React from 'react'
+import { PantallaDinamica } from './PantallaDinamica'
 
 function App() {
+
 
   return (
     <>
 
-      <Login />
-
+      <PantallaDinamica />
 
     </>
   )
