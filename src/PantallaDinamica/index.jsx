@@ -16,7 +16,7 @@ const PantallaDinamica = () => {
         return <Login />
     } else if (pantallaDinamica == 'jugar') {
         return <Juego />
-    } else {
+    } else if(pantallaDinamica == 'final') {
         return <Final />
     }
 

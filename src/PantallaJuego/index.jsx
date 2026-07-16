@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import './pantallaJuego.css';
 import { JugadorContext } from '../JugadorContext';
 import { PantallaDinamica } from '../PantallaDinamica';
+import { Globos } from '../Globos';
 
 const Juego = () => {
   const {
@@ -10,6 +11,7 @@ const Juego = () => {
     puntaje,
     temporizador,
     setTemporizador,
+    setPantallaDinamica,
 
 
   } = useContext(JugadorContext)
@@ -23,14 +25,17 @@ const Juego = () => {
 
       setTemporizador((prevTemporizador) => {
 
-        if (prevTemporizador === 30) {
+        if (prevTemporizador === 0) {
+          setPantallaDinamica('final')
           clearInterval(tiempo)
           return prevTemporizador
         }
 
-        return prevTemporizador + 1
+        return prevTemporizador - 1
 
       })
+
+
 
     }, 1000)
     // }, 3000)
@@ -58,7 +63,8 @@ const Juego = () => {
       </div>
 
       {/* Contenedor Principal del Juego */}
-      <main className="interfaz-juego">
+      <main className="interfaz-ju          // setPantallaDinamica('final')
+ego">
 
         {/* Barra Superior de Información */}
         <header className="barra-superior">
@@ -92,115 +98,15 @@ const Juego = () => {
 
         {/* Área de Juego (Contenedor de Globos) */}
         <section className="area-globos">
-          {/* Bloque 1 */}
-          <div className="globo-juego globo-rojo pos-1">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-verde pos-2">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-azul pos-3">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-negro pos-4">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-rojo pos-5">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
 
-          {/* Bloque 2 */}
-          <div className="globo-juego globo-verde pos-6">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-azul pos-7">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-negro pos-8">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-rojo pos-9">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-verde pos-10">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
 
-          {/* Bloque 3 */}
-          <div className="globo-juego globo-azul pos-11">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-rojo pos-12">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-negro pos-13">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-verde pos-14">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-azul pos-15">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
+          <Globos id={4} color={'azul'} />
+          <Globos id={8} color={'rojo'} />
+          <Globos id={16} color={'verde'} />
+          <Globos id={20} color={'negro'} />
 
-          {/* Bloque 4 */}
-          <div className="globo-juego globo-negro pos-16">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-rojo pos-17">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-verde pos-18">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-azul pos-19">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-negro pos-20">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
 
-          {/* Bloque 5 (Nuevos de Relleno) */}
-          <div className="globo-juego globo-rojo pos-21">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-verde pos-22">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-azul pos-23">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-negro pos-24">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
-          <div className="globo-juego globo-rojo pos-25">
-            <div className="brillo-globo"></div>
-            <div className="hilo-globo"></div>
-          </div>
+
         </section>
 
 
