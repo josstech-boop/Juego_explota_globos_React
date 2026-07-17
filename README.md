@@ -139,7 +139,7 @@ Finalmente, cada globo recibe un identificador único generado con `Date.now()` 
 Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU-USUARIO/TU-REPOSITORIO.git
+git clone https://github.com/josstech-boop/Juego_explota_globos_React.git
 ```
 
 Entrar al proyecto
