@@ -60,6 +60,7 @@ const Juego = () => {
       }
 
       BuscarPosicion()
+      console.log('hola')
 
     }, 500)
 
@@ -114,11 +115,11 @@ const Juego = () => {
 
         {/* Área de Juego (Contenedor de Globos) */}
         <section className="area-globos">
-          
+
           {
-            globosDibujar.map((globo) => {
+            globosDibujar.map((globo) => (
               <Globos key={`${globo.color}_${globo.posicion}`} posicion={globo.posicion} color={globo.color} />
-            })
+            ))
 
           }
 
