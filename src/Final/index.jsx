@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './final.css';
+import { JugadorContext } from '../JugadorContext';
 
 function Final() {
+
+  const {
+    nombreJugador,
+    puntaje,
+    reiniciar,
+    estadisticaGlobos
+
+  } = useContext(JugadorContext)
+
+
   return (
     <div className="pantalla-resultado">
       {/* Fondo y Elementos del Cielo */}
@@ -14,16 +25,16 @@ function Final() {
       {/* Tarjeta Central de Resultados */}
       <main className="tarjeta-resultado">
         <h1 className="titulo-fin">🏆 ¡Fin del Juego!</h1>
-        
+
         {/* Información del Jugador y Puntaje */}
         <div className="resumen-jugador">
           <div className="bloque-info">
             <span className="etiqueta">Jugador</span>
-            <span className="valor-texto">Joselyn</span>
+            <span className="valor-texto">{nombreJugador}</span>
           </div>
           <div className="bloque-info destacada">
             <span className="etiqueta">Puntaje Final</span>
-            <span className="valor-destacado">28 puntos</span>
+            <span className="valor-destacado">{puntaje} puntos</span>
           </div>
         </div>
 
@@ -32,39 +43,41 @@ function Final() {
           {/* Tarjeta 1 */}
           <div className="tarjeta-est">
             <span className="icono-est">🎈</span>
-            <span className="valor-est">17</span>
+            <span className="valor-est">{estadisticaGlobos.globosExplotados}</span>
             <span className="etiqueta-est">Globos explotados</span>
           </div>
 
           {/* Tarjeta 2 */}
           <div className="tarjeta-est">
             <span className="icono-est">🟢</span>
-            <span className="valor-est">15</span>
+            <span className="valor-est">{estadisticaGlobos.globosPositivos}</span>
             <span className="etiqueta-est">Globos positivos</span>
           </div>
 
           {/* Tarjeta 3 */}
           <div className="tarjeta-est">
             <span className="icono-est">⚫</span>
-            <span className="valor-est">2</span>
+            <span className="valor-est">{estadisticaGlobos.globosNegativos}</span>
             <span className="etiqueta-est">Globos negros</span>
           </div>
 
           {/* Tarjeta 4 */}
-          <div className="tarjeta-est">
-            <span className="icono-est">🏅</span>
+          {/* <div className="tarjeta-est">
+            <span className="icono-est"></span>
             <span className="valor-est">6</span>
             <span className="etiqueta-est">Mejor racha</span>
-          </div>
+          </div> */}
         </section>
 
         {/* Caja de Felicitación / Mensaje */}
         <div className="caja-mensaje">
-          <p className="texto-mensaje">🎉 ¡Eres un maestro explotando globos!</p>
+          <p className="texto-mensaje">{puntaje < 0 ? '¡Cuidado con los globos negros!' : puntaje > 0 && puntaje <= 10 ? '¡Buen intento!' : puntaje > 10 && puntaje <= 25 ? '¡Muy bien!' : '🏅¡Eres un maestro explotando globos!'}</p>
         </div>
 
         {/* Botón de Acción */}
-        <button type="button" className="boton-reiniciar">
+        <button type="button" className="boton-reiniciar"
+          onClick={reiniciar}
+        >
           Jugar otra vez
         </button>
       </main>
@@ -78,4 +91,4 @@ function Final() {
   );
 }
 
-export {Final}
+export { Final }

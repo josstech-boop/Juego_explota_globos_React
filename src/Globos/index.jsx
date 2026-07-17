@@ -4,18 +4,16 @@ import { GloboNegro } from "./negro";
 import { GloboRojo } from "./rojo";
 import { GloboVerde } from "./verde";
 
-const Globos = ({ id, color }) => {
+const Globos = ({ posicion, color }) => {
 
 
     const colores = {
-        'azul': <GloboAzul id={id} />,
-        'rojo': <GloboRojo id={id} />,
-        'verde': <GloboVerde id={id} />,
-        'negro': <GloboNegro id={id} />,
+        'azul': <GloboAzul posicion={posicion} />,
+        'rojo': <GloboRojo posicion={posicion} />,
+        'verde': <GloboVerde posicion={posicion} />,
+        'negro': <GloboNegro posicion={posicion} />,
     }
 
-
-    console.log(colores.rojo)
     //realizar un randomn de colores de un arreglo
 
     return <>

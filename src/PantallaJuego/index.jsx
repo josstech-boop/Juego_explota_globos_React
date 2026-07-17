@@ -12,15 +12,15 @@ const Juego = () => {
     temporizador,
     setTemporizador,
     setPantallaDinamica,
+    BuscarPosicion,
+    globosDibujar,
 
 
   } = useContext(JugadorContext)
 
   //logica del temporizador
-
   useEffect(() => {
 
-    // const espera = setTimeout(() => {
     const tiempo = setInterval(() => {
 
       setTemporizador((prevTemporizador) => {
@@ -34,11 +34,7 @@ const Juego = () => {
         return prevTemporizador - 1
 
       })
-
-
-
     }, 1000)
-    // }, 3000)
 
 
     //estoy colocando un Return porque a la hora de montar la primera vez limpie el primer 
@@ -50,7 +46,28 @@ const Juego = () => {
 
   }, [])
 
+  //logica de los globos random
 
+  useEffect(() => {
+
+    console.log('globos dibujar', globosDibujar)
+
+    const tiempo = setInterval(() => {
+
+      if (temporizador === 0) {
+        clearInterval(tiempo)
+        return
+      }
+
+      BuscarPosicion()
+
+    }, 500)
+
+    return () => {
+      clearInterval(tiempo)
+    }
+
+  }, [globosDibujar])
 
 
   return (
@@ -63,8 +80,7 @@ const Juego = () => {
       </div>
 
       {/* Contenedor Principal del Juego */}
-      <main className="interfaz-ju          // setPantallaDinamica('final')
-ego">
+      <main className="interfaz-juego">
 
         {/* Barra Superior de Información */}
         <header className="barra-superior">
@@ -98,14 +114,18 @@ ego">
 
         {/* Área de Juego (Contenedor de Globos) */}
         <section className="area-globos">
+          
+          {
+            globosDibujar.map((globo) => {
+              <Globos key={`${globo.color}_${globo.posicion}`} posicion={globo.posicion} color={globo.color} />
+            })
+
+          }
 
 
-          <Globos id={4} color={'azul'} />
-          <Globos id={8} color={'rojo'} />
-          <Globos id={16} color={'verde'} />
-          <Globos id={20} color={'negro'} />
-
-
+          <Globos posicion={8} color={'rojo'} />
+          <Globos posicion={16} color={'verde'} />
+          <Globos posicion={20} color={'negro'} />
 
         </section>
 
