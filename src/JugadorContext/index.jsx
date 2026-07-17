@@ -1,5 +1,6 @@
 import React from "react";
-
+import { createContext } from "react";
+import { useState } from "react";
 
 const JugadorContext = React.createContext()
 
@@ -10,31 +11,37 @@ const estadisticas = {
 }
 
 const globosRandom = [
-    { posicion: 3, color: "rojo" },
-    { posicion: 15, color: "verde" },
-    { posicion: 8, color: "azul" },
-    { posicion: 2, color: "negro" },
+    { id: 0, posicion: 18, color: "azul" },
+    { id: 0, posicion: 4, color: "rojo" },
+    { id: 0, posicion: 22, color: "verde" },
+    { id: 0, posicion: 9, color: "negro" },
 
-    { posicion: 11, color: "rojo" },
-    { posicion: 7, color: "verde" },
-    { posicion: 19, color: "azul" },
-    { posicion: 5, color: "negro" },
+    { id: 0, posicion: 16, color: "rojo" },
+    { id: 0, posicion: 1, color: "azul" },
+    { id: 0, posicion: 13, color: "verde" },
+    { id: 0, posicion: 20, color: "negro" },
 
-    { posicion: 14, color: "rojo" },
-    { posicion: 1, color: "verde" },
-    { posicion: 10, color: "azul" },
-    { posicion: 18, color: "negro" },
+    { id: 0, posicion: 7, color: "azul" },
+    { id: 0, posicion: 24, color: "rojo" },
+    { id: 0, posicion: 5, color: "verde" },
+    { id: 0, posicion: 14, color: "negro" },
 
-    { posicion: 6, color: "rojo" },
-    { posicion: 20, color: "verde" },
-    { posicion: 9, color: "azul" },
-    { posicion: 13, color: "negro" },
+    { id: 0, posicion: 25, color: "rojo" },
+    { id: 0, posicion: 10, color: "azul" },
+    { id: 0, posicion: 3, color: "verde" },
+    { id: 0, posicion: 19, color: "negro" },
 
-    { posicion: 4, color: "rojo" },
-    { posicion: 16, color: "verde" },
-    { posicion: 12, color: "azul" },
-    { posicion: 17, color: "negro" }
-];
+    { id: 0, posicion: 8, color: "rojo" },
+    { id: 0, posicion: 12, color: "azul" },
+    { id: 0, posicion: 21, color: "verde" },
+    { id: 0, posicion: 6, color: "negro" },
+
+    { id: 0, posicion: 2, color: "rojo" },
+    { id: 0, posicion: 15, color: "azul" },
+    { id: 0, posicion: 17, color: "verde" },
+    { id: 0, posicion: 23, color: "negro" },
+    { id: 0, posicion: 11, color: "rojo" }
+]
 
 const JugadorContextProvider = ({ children }) => {
 
@@ -47,21 +54,20 @@ const JugadorContextProvider = ({ children }) => {
     //Mensaje de Error
     const [error, setError] = React.useState(false)
     //temporizador 
-    const [temporizador, setTemporizador] = React.useState(10)
+    const [temporizador, setTemporizador] = React.useState(30)
     //Estadisticas de globos
     const [estadisticaGlobos, setEstadisticaGlobos] = React.useState(estadisticas)
-    // Estado para buscar globos e eliminarlos 
-    const [globosExistencia, setGlobosExistencia] = React.useState(globosRandom)
     //Estado para dibujar los globos 
     const [globosDibujar, setGlobosDibujar] = React.useState([])
-
 
 
     const reiniciar = () => {
         setPantallaDinamica('inicio')
         setPuntaje(0)
-        setTemporizador(10)
+        setTemporizador(30)
         setEstadisticaGlobos(estadisticas)
+        setGlobosDibujar([])
+
     }
 
     const contadorPositivos = () => {
@@ -82,24 +88,36 @@ const JugadorContextProvider = ({ children }) => {
 
         }))
     }
-
-
-
     const BuscarPosicion = () => {
-        // const globosTemporales = [...globosDibujar]
         const minCeiled = Math.ceil(1)
         const maxFloored = Math.floor(20)
         const buscarIndice = Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled)
 
-        const posicionTemporal = globosExistencia.find(globoPosicion => globoPosicion.posicion == buscarIndice)
-        console.log('yo posiccion', posicionTemporal)
+        const posicionTemporal = globosRandom.find(globoPosicion => globoPosicion.posicion == buscarIndice)
 
-        // globosTemporales.push(posicionTemporal)
-        // console.log('globo temporal', globosTemporales)
+        const copia = { ...posicionTemporal }
+        copia.id = Date.now() + (Math.floor(Math.random() * 50))
 
-        setGlobosDibujar((prev) => [...prev, posicionTemporal])
+        let posicionIncluye = globosDibujar.every(globo => globo.posicion != copia.posicion)
 
-        console.log('inidice', buscarIndice)
+        if (posicionIncluye) {
+            setGlobosDibujar((prev) => [...prev, copia])
+            tiempoVida(copia.id)
+
+        } else {
+            BuscarPosicion()
+        }
+
+    }
+    const EliminarGlobo = (id) => {
+        setGlobosDibujar((prev) => (prev.filter(globo => globo.id != id)))
+    }
+
+    const tiempoVida = (id) => {
+
+        setTimeout(() => {
+            EliminarGlobo(id)
+        }, 5000)
 
     }
 
@@ -124,6 +142,7 @@ const JugadorContextProvider = ({ children }) => {
                 contadorNegro,
                 BuscarPosicion,
                 globosDibujar,
+                EliminarGlobo,
             }
         }>
             {children}

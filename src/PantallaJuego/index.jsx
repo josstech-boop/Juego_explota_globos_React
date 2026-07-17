@@ -11,16 +11,17 @@ const Juego = () => {
     puntaje,
     temporizador,
     setTemporizador,
+    pantallaDinamica,
     setPantallaDinamica,
     BuscarPosicion,
     globosDibujar,
+    EliminarGlobo,
 
 
   } = useContext(JugadorContext)
 
   //logica del temporizador
   useEffect(() => {
-
     const tiempo = setInterval(() => {
 
       setTemporizador((prevTemporizador) => {
@@ -28,7 +29,8 @@ const Juego = () => {
         if (prevTemporizador === 0) {
           setPantallaDinamica('final')
           clearInterval(tiempo)
-          return prevTemporizador
+          prevTemporizador
+          return 0
         }
 
         return prevTemporizador - 1
@@ -36,40 +38,33 @@ const Juego = () => {
       })
     }, 1000)
 
-
-    //estoy colocando un Return porque a la hora de montar la primera vez limpie el primer 
+    //NOta: estoy colocando un Return porque a la hora de montar la primera vez limpie el primer 
     //setTimeout o interval,  luego al segundo montaje no me de errores 
     //donde tenga doble setTimeOut o intervaly tenga errores
     return () => {
       clearInterval(tiempo)
     }
-
   }, [])
 
   //logica de los globos random
-
   useEffect(() => {
-
-    console.log('globos dibujar', globosDibujar)
+    if (pantallaDinamica !== 'jugar') return
 
     const tiempo = setInterval(() => {
-
       if (temporizador === 0) {
         clearInterval(tiempo)
         return
       }
 
       BuscarPosicion()
-      console.log('hola')
 
-    }, 500)
+
+    }, 400)
 
     return () => {
       clearInterval(tiempo)
     }
-
-  }, [globosDibujar])
-
+  }, [pantallaDinamica, temporizador])
 
   return (
     <div className="pantalla-juego">
@@ -115,19 +110,13 @@ const Juego = () => {
 
         {/* Área de Juego (Contenedor de Globos) */}
         <section className="area-globos">
-
           {
             globosDibujar.map((globo) => (
-              <Globos key={`${globo.color}_${globo.posicion}`} posicion={globo.posicion} color={globo.color} />
+
+              < Globos key={globo.id} id={globo.id} posicion={globo.posicion} color={globo.color} />
             ))
 
           }
-
-
-          <Globos posicion={8} color={'rojo'} />
-          <Globos posicion={16} color={'verde'} />
-          <Globos posicion={20} color={'negro'} />
-
         </section>
 
 

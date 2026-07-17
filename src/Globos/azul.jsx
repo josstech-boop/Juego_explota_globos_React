@@ -1,21 +1,24 @@
 
 import { useContext } from "react"
 import { JugadorContext } from "../JugadorContext"
-const GloboAzul = ({ posicion }) => {
+const GloboAzul = ({ posicion, id }) => {
 
     const {
         setPuntaje,
         contadorPositivos,
-        contadorExplotados
+        contadorExplotados,
+        EliminarGlobo,
     } = useContext(JugadorContext)
 
     return <>
-        <div className={`globo-juego globo-azul pos-${posicion}`}
+        <div id={id} className={`globo-juego globo-azul pos-${posicion}`}
             onClick={(event) => {
-                console.log(event.target)
                 setPuntaje((prevPuntaje) => prevPuntaje + 5)
                 contadorPositivos()
                 contadorExplotados()
+                EliminarGlobo(id)
+
+               
             }}
         >
             <div className="brillo-globo"></div>
