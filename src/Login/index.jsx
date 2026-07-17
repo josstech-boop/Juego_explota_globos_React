@@ -3,12 +3,11 @@ import React from 'react'
 import { useContext } from 'react'
 import { JugadorContext } from '../JugadorContext'
 
-
 const Login = () => {
 
     const {
         nombreJugador,
-        setnombreJugador: actualizarNombre,
+        setnombreJugador,
         setPantallaDinamica,
         setError,
         error,
@@ -33,10 +32,6 @@ const Login = () => {
                     Pon a prueba tus reflejos. Consigue la mayor puntuación explotando los globos correctos antes de que se acabe el tiempo. ¡Evita los globos negros!
                 </p>
 
-                <form action="">
-
-                </form>
-
                 {/* Input de Nombre */}
                 <div className="campo-nombre">
 
@@ -49,16 +44,12 @@ const Login = () => {
                         value={nombreJugador}
                         onChange={
                             (event) => {
-                                actualizarNombre(event.target.value)
-                                console.log(nombreJugador)
+                                setnombreJugador(event.target.value)
                             }
                         }
-                        required
-
                     />
 
                     {/* Mensaje de error */}
-
                     {error ? <div className="mensaje-error-alerta">
                         ⚠️ Ingresa tu nombre para comenzar.
                     </div> : ''}
@@ -107,17 +98,14 @@ const Login = () => {
                 <button type="button" className="boton-comenzar"
                     onClick={
                         (event) => {
-
                             if (nombreJugador.trim() != '') {
                                 setPantallaDinamica('jugar')
                             } else {
                                 setError(true)
-
                                 setTimeout(() => {
                                     setError(false)
                                 }, 2000)
                             }
-
                         }}
                 >
                     Comenzar Juego

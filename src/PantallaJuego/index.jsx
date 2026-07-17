@@ -51,6 +51,7 @@ const Juego = () => {
     if (pantallaDinamica !== 'jugar') return
 
     const tiempo = setInterval(() => {
+
       if (temporizador === 0) {
         clearInterval(tiempo)
         return
@@ -58,8 +59,7 @@ const Juego = () => {
 
       BuscarPosicion()
 
-
-    }, 400)
+    }, 300)
 
     return () => {
       clearInterval(tiempo)

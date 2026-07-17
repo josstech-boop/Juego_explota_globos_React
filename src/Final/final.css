@@ -306,6 +306,88 @@
 }
 
 /* ==========================================================================
+   Efecto de Estrellitas - Login, Juego y Pantalla Final (CSS Unificado)
+   ========================================================================== */
+
+/* Forzamos el posicionamiento relativo para los pseudoelementos de fondo */
+.pantalla-inicio,
+.pantalla-juego,
+.pantalla-resultado {
+  position: relative;
+}
+
+/* Capa de estrellitas amarillas */
+.pantalla-inicio::before,
+.pantalla-juego::before,
+.pantalla-resultado::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  background: transparent;
+  border-radius: 50%;
+  z-index: 2; /* Se mantiene detrás de las tarjetas blancas principales */
+  
+  /* Distribución de las estrellas usando sombras múltiples */
+  box-shadow: 
+    15vw 15vh 2px 1px #fff700,
+    25vw 28vh 1px 0px #ffffff,
+    10vw 45vh 3px 1px #fff700,
+    38vw 12vh 2px 0px #ffffff,
+    30vw 50vh 2px 1px #fff700,
+    75vw 15vh 3px 1px #fff700,
+    85vw 30vh 1px 0px #ffffff,
+    90vw 50vh 2px 1px #fff700,
+    68vw 22vh 2px 0px #ffffff,
+    80vw 42vh 3px 1px #fff700;
+
+  animation: parpadeoEstrellasUnificado 2s infinite ease-in-out alternate;
+}
+
+/* Capa de estrellitas blancas adicionales */
+.pantalla-inicio::after,
+.pantalla-juego::after,
+.pantalla-resultado::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: transparent;
+  border-radius: 50%;
+  z-index: 2;
+  
+  box-shadow: 
+    20vw 20vh 3px 1px #ffffff,
+    18vw 60vh 2px 0px #fff700,
+    35vw 35vh 3px 1px #ffffff,
+    70vw 38vh 2px 1px #ffffff,
+    88vw 10vh 3px 0px #fff700,
+    63vw 55vh 2px 1px #ffffff;
+
+  animation: parpadeoEstrellasUnificado 3s infinite ease-in-out alternate-reverse;
+}
+
+/* Animación de brillo y parpadeo continuo */
+@keyframes parpadeoEstrellasUnificado {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+}
+
+/* ==========================================================================
    Responsividad (Diseño fluido y adaptable)
    ========================================================================== */
 @media (max-width: 480px) {

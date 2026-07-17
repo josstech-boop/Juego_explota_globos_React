@@ -1,13 +1,11 @@
 import './mensaje.css'
 import { JugadorContext } from '../JugadorContext'
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 
 const MensajeError = () => {
 
     const {
-
         mensajeError,
-
     } = useContext(JugadorContext)
 
     if (!mensajeError) {

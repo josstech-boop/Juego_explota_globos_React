@@ -26,9 +26,9 @@ const globosRandom = [
     { id: 0, posicion: 5, color: "verde" },
     { id: 0, posicion: 14, color: "negro" },
 
-    { id: 0, posicion: 25, color: "rojo" },
+    { id: 0, posicion: 25, color: "negro" },
     { id: 0, posicion: 10, color: "azul" },
-    { id: 0, posicion: 3, color: "verde" },
+    { id: 0, posicion: 3, color: "negro" },
     { id: 0, posicion: 19, color: "negro" },
 
     { id: 0, posicion: 8, color: "rojo" },
@@ -40,7 +40,7 @@ const globosRandom = [
     { id: 0, posicion: 15, color: "azul" },
     { id: 0, posicion: 17, color: "verde" },
     { id: 0, posicion: 23, color: "negro" },
-    { id: 0, posicion: 11, color: "rojo" }
+    { id: 0, posicion: 11, color: "negro" }
 ]
 
 const JugadorContextProvider = ({ children }) => {
@@ -92,7 +92,6 @@ const JugadorContextProvider = ({ children }) => {
         const minCeiled = Math.ceil(1)
         const maxFloored = Math.floor(20)
         const buscarIndice = Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled)
-
         const posicionTemporal = globosRandom.find(globoPosicion => globoPosicion.posicion == buscarIndice)
 
         const copia = { ...posicionTemporal }
@@ -114,7 +113,6 @@ const JugadorContextProvider = ({ children }) => {
     }
 
     const tiempoVida = (id) => {
-
         setTimeout(() => {
             EliminarGlobo(id)
         }, 5000)

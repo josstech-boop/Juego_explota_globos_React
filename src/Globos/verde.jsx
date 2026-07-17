@@ -1,4 +1,3 @@
-
 import { useContext } from "react"
 import { JugadorContext } from "../JugadorContext"
 const GloboVerde = ({ posicion, id }) => {
@@ -16,9 +15,7 @@ const GloboVerde = ({ posicion, id }) => {
                 setPuntaje((prevPuntaje) => prevPuntaje + 2)
                 contadorPositivos()
                 contadorExplotados()
-                EliminarGlobo(id)
-
-            
+                EliminarGlobo(id)            
             }}
         >
             <div className="brillo-globo"></div>

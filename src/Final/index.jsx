@@ -26,6 +26,14 @@ function Final() {
       <main className="tarjeta-resultado">
         <h1 className="titulo-fin">🏆 ¡Fin del Juego!</h1>
 
+        {/* Caja de Felicitación / Mensaje */}
+        <div className="caja-mensaje">
+          <p className="texto-mensaje">
+            {puntaje <= 0 ? '💥 ¡Cuidado con los globos negros! 💥' : puntaje > 0 && puntaje <= 10 ? '🎈 ¡Buen intento! ¡Sigue practicando! 🎈' : puntaje > 10 && puntaje <= 25
+              ? '✨ ¡Muy bien! ¡Lo estás haciendo genial! ✨' : puntaje > 25 ? '🏅 ¡Eres un maestro explotando globos! 🏅' : ''}
+          </p>
+        </div>
+
         {/* Información del Jugador y Puntaje */}
         <div className="resumen-jugador">
           <div className="bloque-info">
@@ -61,18 +69,9 @@ function Final() {
             <span className="etiqueta-est">Globos negros</span>
           </div>
 
-          {/* Tarjeta 4 */}
-          {/* <div className="tarjeta-est">
-            <span className="icono-est"></span>
-            <span className="valor-est">6</span>
-            <span className="etiqueta-est">Mejor racha</span>
-          </div> */}
         </section>
 
-        {/* Caja de Felicitación / Mensaje */}
-        <div className="caja-mensaje">
-          <p className="texto-mensaje">{puntaje < 0 ? '¡Cuidado con los globos negros!' : puntaje > 0 && puntaje <= 10 ? '¡Buen intento!' : puntaje > 10 && puntaje <= 25 ? '¡Muy bien!' : '🏅¡Eres un maestro explotando globos!'}</p>
-        </div>
+
 
         {/* Botón de Acción */}
         <button type="button" className="boton-reiniciar"

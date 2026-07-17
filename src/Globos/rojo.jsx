@@ -1,4 +1,3 @@
-
 import { useContext } from "react"
 import { JugadorContext } from "../JugadorContext"
 const GloboRojo = ({ posicion, id }) => {

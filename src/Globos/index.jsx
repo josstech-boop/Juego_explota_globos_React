@@ -6,7 +6,6 @@ import { GloboVerde } from "./verde";
 
 const Globos = ({ posicion, color, id }) => {
 
-
     const colores = {
         'azul': <GloboAzul posicion={posicion} id={id} />,
         'rojo': <GloboRojo posicion={posicion} id={id} />,
@@ -14,11 +13,8 @@ const Globos = ({ posicion, color, id }) => {
         'negro': <GloboNegro posicion={posicion} id={id} />,
     }
 
-    //realizar un randomn de colores de un arreglo
-
     return <>
         {colores[color]}
-
     </>
 }
 
