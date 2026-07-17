@@ -29,6 +29,12 @@ Al finalizar el tiempo, el juego muestra un resumen con el puntaje obtenido y la
 
 ---
 
+## 🚀 Demostración en Vivo
+Puedes jugar directamente en tu navegador accediendo aquí:  
+👉 [https://josstech-boop.github.io/Juego_explota_globos_React](https://josstech-boop.github.io/Juego_explota_globos_React)
+
+----
+
 # 🖼 Capturas del proyecto
 
 ## Pantalla de inicio
