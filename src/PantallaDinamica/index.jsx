@@ -3,35 +3,27 @@ import { JugadorContext } from "../JugadorContext";
 import { Final } from "../Final";
 import { Login } from "../Login";
 import { Juego } from "../PantallaJuego";
+
 const PantallaDinamica = () => {
 
     const {
         pantallaDinamica
     } = useContext(JugadorContext)
 
-
     if (pantallaDinamica == 'inicio') {
         return (
-            <>
-                <Login />
-            </>
+            <Login />
         )
     } else if (pantallaDinamica == 'jugar') {
         return (
-            <>
-                <Juego />
-            </>
+            <Juego />
         )
 
     } else if (pantallaDinamica == 'final') {
         return (
-            <>
-                <Final />
-            </>
+            <Final />
         )
     }
-
-
 }
 
 export { PantallaDinamica } 

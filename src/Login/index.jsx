@@ -17,7 +17,6 @@ const Login = () => {
 
         <div className="pantalla-inicio">
 
-
             {/* Fondo y Elementos del Cielo */}
             <div className="cielo">
                 <div className="nube nube-1"></div>
