@@ -2,6 +2,7 @@ import './login.css'
 import React from 'react'
 import { useContext } from 'react'
 import { JugadorContext } from '../JugadorContext'
+import './mensaje.css'
 
 const Login = () => {
 
@@ -49,9 +50,9 @@ const Login = () => {
                     />
 
                     {/* Mensaje de error */}
-                    {error ? <div className="mensaje-error-alerta">
+                    {error && <div className="mensaje-error-alerta">
                         ⚠️ Ingresa tu nombre para comenzar.
-                    </div> : ''}
+                    </div>}
                 </div>
 
                 {/* Sección de Puntuaciones */}
@@ -96,6 +97,7 @@ const Login = () => {
                 {/* Botón de Acción */}
                 <button type="button" className="boton-comenzar"
                     onClick={
+
                         (event) => {
                             if (nombreJugador.trim() != '') {
                                 setPantallaDinamica('jugar')

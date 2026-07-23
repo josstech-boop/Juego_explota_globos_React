@@ -399,7 +399,7 @@
 /* ==========================================================================
    Diseño de la Alerta de Validación (Estática)
    ========================================================================== */
-.mensaje-error-alerta {
+/* .mensaje-error-alerta {
   display: flex;
   background-color: #ffeaea;
   color: #c0392b;
@@ -413,7 +413,7 @@
   box-shadow: 0 4px 10px rgba(192, 57, 43, 0.08);
   
   /* Animación de entrada al cargar la pantalla */
-  animation: slideFadeIn 0.3s ease-out forwards;
+  /* animation: slideFadeIn 0.3s ease-out forwards;
 }
 
 @keyframes slideFadeIn {
@@ -425,4 +425,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */ 

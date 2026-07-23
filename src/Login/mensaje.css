@@ -2,7 +2,7 @@
    Diseño de la Alerta de Validación (Estática)
    ========================================================================== */
 .mensaje-error-alerta {
-  display: none;
+  display: flex;
   background-color: #ffeaea;
   color: #c0392b;
   border: 1px solid #f5c6cb;

@@ -9,7 +9,6 @@ function Final() {
     puntaje,
     reiniciar,
     estadisticaGlobos
-
   } = useContext(JugadorContext)
 
 

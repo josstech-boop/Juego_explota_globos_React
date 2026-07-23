@@ -60,34 +60,31 @@ const JugadorContextProvider = ({ children }) => {
     //Estado para dibujar los globos 
     const [globosDibujar, setGlobosDibujar] = React.useState([])
 
-
     const reiniciar = () => {
         setPantallaDinamica('inicio')
         setPuntaje(0)
         setTemporizador(30)
         setEstadisticaGlobos(estadisticas)
         setGlobosDibujar([])
-
     }
 
     const contadorPositivos = () => {
         setEstadisticaGlobos((prev) => ({
             ...prev, globosPositivos: prev.globosPositivos + 1
-
         }))
     }
     const contadorExplotados = () => {
         setEstadisticaGlobos((prev) => ({
             ...prev, globosExplotados: prev.globosExplotados + 1
-
         }))
     }
+
     const contadorNegro = () => {
         setEstadisticaGlobos((prev) => ({
             ...prev, globosNegativos: prev.globosNegativos + 1
-
         }))
     }
+
     const BuscarPosicion = () => {
         const minCeiled = Math.ceil(1)
         const maxFloored = Math.floor(20)
@@ -106,8 +103,8 @@ const JugadorContextProvider = ({ children }) => {
         } else {
             BuscarPosicion()
         }
-
     }
+
     const EliminarGlobo = (id) => {
         setGlobosDibujar((prev) => (prev.filter(globo => globo.id != id)))
     }
@@ -118,7 +115,6 @@ const JugadorContextProvider = ({ children }) => {
         }, 5000)
 
     }
-
 
     return (
         <JugadorContext.Provider value={

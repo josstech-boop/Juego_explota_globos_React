@@ -16,7 +16,6 @@ const GloboNegro = ({  posicion, id }) => {
                 contadorExplotados()
                 contadorNegro()
                 EliminarGlobo(id)
-
             }}
         >
             <div className="brillo-globo"></div>
